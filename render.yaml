@@ -1,0 +1,18 @@
+# Render Blueprint: New > Blueprint > pick this repo. Free plan works because the data lives in Neon (PostgreSQL),
+# not on the server's disk. After the first deploy, open the service > Environment and paste your Neon URL into
+# CREDITLENS_DATABASE_URL (see DEPLOY.md).
+services:
+  - type: web
+    name: creditlens
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: CREDITLENS_ENV
+        value: production
+      - key: CREDITLENS_JWT_SECRET
+        generateValue: true
+      - key: CREDITLENS_DATABASE_URL
+        sync: false          # secret: you enter it in the Render dashboard
+      - key: CREDITLENS_CORS_ORIGINS
+        sync: false          # e.g. https://YOUR-USERNAME.github.io (only needed if the frontend is on GitHub Pages)

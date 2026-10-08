@@ -1,0 +1,8 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+python-multipart>=0.0.9
+PyJWT>=2.7
+pandas>=2.2
+numpy>=1.26
+psycopg[binary]>=3.1
